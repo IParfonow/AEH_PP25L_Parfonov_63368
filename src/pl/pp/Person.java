@@ -1,45 +1,33 @@
 package pl.pp;
 
 public class Person {
-
     private String forename;
     private String surname;
-    private String address;
-    private int    age;
-    private int    yearOfBirth;
+    private int age;
 
-    public Person() { }
+    public Person() {}
 
-    public Person(String forename, String surname, int age,
-                  String address, int yearOfBirth) {
-        this.forename    = forename;
-        this.surname     = surname;
-        this.age         = age;
-        this.address     = address;
-        this.yearOfBirth = yearOfBirth;
+    public Person(String forename, String surname, int age) {
+        this.forename = forename;
+        this.surname = surname;
+        this.age = age;
     }
 
     public void hiToAll() {
-        System.out.println("Nazywam się " + forename + " " + surname +
-                ", mam " + age + " lat, mieszkam: " + address +
-                ", rok urodzenia: " + yearOfBirth);
+        System.out.println("Nazywam się " + forename + " " + surname + ". Mam " + age + " lat.");
     }
 
-    public void growOld() {
-        age += 1;
+    public int growOld(int age) {
+        this.age += age;
+        return this.age;
     }
 
-    public void growOld(int n) {
-        age += n;
-    }
+    public String getForename() { return forename; }
+    public void setForename(String forename) { this.forename = forename; }
 
-    public void beYounger() {
-        age -= 1;
-    }
+    public String getSurname() { return surname; }
+    public void setSurname(String surname) { this.surname = surname; }
 
-    public int getAge()             { return age;      }
-    public String getForename()     { return forename; }
-    public void setForename(String f) { this.forename = f; }
-    public String getSurname()      { return surname;  }
-    public void setSurname(String s) { this.surname  = s; }
+    public int getAge() { return age; }
+    public void setAge(int age) { this.age = age; }
 }
