@@ -3,7 +3,8 @@ package pl.pp;
 import java.io.*;
 import java.util.Scanner;
 
-public class mojaDwonastaAplikacja {
+public class mojaTrzynastaAplikacja
+{
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -21,12 +22,17 @@ public class mojaDwonastaAplikacja {
 
         int lineCount = 0;
         int charCount = 0;
+        int wordCount = 0;
 
         try (BufferedReader reader = new BufferedReader(new FileReader(inputFile))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 lineCount++;
                 charCount += line.length();
+                String[] words = line.trim().split("\\s+");
+                if (!line.trim().isEmpty()) {
+                    wordCount += words.length;
+                }
             }
         } catch (IOException e) {
             System.out.println("Błąd odczytu pliku wejściowego.");
@@ -35,10 +41,12 @@ public class mojaDwonastaAplikacja {
 
         System.out.println("Liczba linii: " + lineCount);
         System.out.println("Liczba znaków: " + charCount);
+        System.out.println("Liczba słów: " + wordCount);
 
         try (PrintWriter writer = new PrintWriter(outputFilePath)) {
             writer.println("Liczba linii: " + lineCount);
             writer.println("Liczba znaków: " + charCount);
+            writer.println("Liczba słów: " + wordCount);
         } catch (IOException e) {
             System.out.println("Błąd zapisu do pliku wyjściowego.");
         }
